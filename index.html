@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Create Account
+        </div>
+        <form id="form-login" class="form-login" method="POST">
+         
+            <div class="form-input">
+                <label>First name</label>
+                <input type="text" class="name-input" placeholder="Enter your name">
+                <small>Error</small>
+            </div>
+
+            <div class="form-input">
+                <label>Email</label>
+                <input type="email" class="email-input" placeholder="Enter your email">
+                <small>Error</small>
+            </div>
+
+            <div class="form-input">
+                <label>Password</label>
+                <input type="password" class="psd-input" placeholder="Enter your password">
+                <small>Error</small>
+            </div>
+
+            <div class="form-input">
+                <label>Repeat password</label>
+                <input type="password" class="psd2-input" placeholder="Repeat your password">
+                <small>Error</small>
+            </div>
+            <div class="msg">
+             
+            </div>
+
+            <div class="form-input">
+                
+                <button type="button" class="submit-input">Register</button>
+               
+            </div>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+
+    function check_name()
+    {
+        var fname = $(".name-input").val();
+        if (fname !== '')
+        {
+            $(".name-input").parent().removeClass("error input");
+            flag_fname = true;
+        }
+        else
+        {
+            $(".name-input").parent().addClass("error input");
+        }
+
+    }
+
+    function check_email()
+    {
+        var email = $(".email-input").val();
+        if (email !== '')
+        {
+            $(".email-input").parent().removeClass("error input");
+            flag_email = true;
+        }
+        else
+        {
+            $(".email-input").parent().addClass("error input");
+        }
+
+    }
+
+    function check_psd()
+    {
+        var psd = $(".psd-input").val();
+        if (psd !== '')
+        {
+            $(".psd-input").parent().removeClass("error input");
+            flag_psd = true;
+        }
+        else
+        {
+            $(".psd-input").parent().addClass("error input");
+        }
+
+    }
+
+    function check_repeat()
+    {
+        var repeat_psd = $(".psd2-input").val();
+        var pass = $(".psd-input").val();
+        if (repeat_psd !== '' & pass == repeat_psd)
+        {
+            $(".psd2-input").parent().removeClass("error input");
+            flag_psd2 = true;
+        }
+        else
+        {
+            $(".psd2-input").parent().addClass("error input");
+        }
+
+    }
+
+            $(".submit-input").click(function() {
+
+                flag_fname = false;
+                flag_email = false;
+                flag_psd = false;
+                flag_psd2 = false;
+                check_name();
+                check_email();
+                check_psd();
+                check_repeat();
+                
+                if(flag_fname == true &&
+                   flag_email == true &&
+                   flag_psd == true &&
+                   flag_psd2 == true)
+                   {
+                    $(".msg").html("<span style='color:#398dfa'>Account created successfully</span> ").hide();
+                    $(".msg").fadeIn(500);
+                   }
+                   else
+                   {
+                    $(".msg").html("<span style='color:red'>Correct the form data!").hide();
+                    $(".msg").fadeIn(500);
+                   }
+
+
+            });
+        });
+    </script>
+</body>
+</html>
